@@ -1,51 +1,51 @@
 #include "lista.h"
 
 
-void crear_lista(t_lista* lista)
+void crearLista(tLista* lista)
 {
     *lista = NULL;
 }
 
-int lista_vacia(const t_lista* lista)
+int listaVacia(const tLista* lista)
 {
     return *lista == NULL;
 }
 
-int lista_llena(const t_lista* lista)
+int listaLlena(const tLista* lista)
 {
     return 0;
 }
-int agregar_a_lista(t_lista* lista, void* dato, unsigned tam_dato)
+int agregarALista(tLista* lista, void* dato, unsigned tamDato)
 {
-    t_nodo* nuevo_nodo;
+    tNodo* nuevoNodo;
 
-    nuevo_nodo = malloc(sizeof(t_nodo));
-    if(!nuevo_nodo)
+    nuevoNodo = malloc(sizeof(tNodo));
+    if(!nuevoNodo)
         return SIN_ESPACIO;
 
-    nuevo_nodo->dato = malloc(tam_dato);
-    if(!nuevo_nodo->dato)
+    nuevoNodo->dato = malloc(tamDato);
+    if(!nuevoNodo->dato)
     {
-        free(nuevo_nodo);
+        free(nuevoNodo);
         return SIN_ESPACIO;
     }
 
-    memcpy(nuevo_nodo->dato, dato, tam_dato);
-    nuevo_nodo->tam = tam_dato;
-    nuevo_nodo->sig = *lista;
-    *lista = nuevo_nodo;
+    memcpy(nuevoNodo->dato, dato, tamDato);
+    nuevoNodo->tam = tamDato;
+    nuevoNodo->sig = *lista;
+    *lista = nuevoNodo;
 
     return TODO_OK;
 }
 
-int eliminar_de_lista(t_lista* lista, void* dato, unsigned tam_dato)
+int eliminarDeLista(tLista* lista, void* dato, unsigned tamDato)
 {
-    t_nodo* elim = *lista;
+    tNodo* elim = *lista;
 
     if(elim == NULL)
         return LISTA_VACIA;
 
-    memcpy(dato, elim->dato, MIN(tam_dato, elim->tam));
+    memcpy(dato, elim->dato, MIN(tamDato, elim->tam));
     *lista = elim->sig;
     free(elim->dato);
     free(elim);
@@ -53,7 +53,7 @@ int eliminar_de_lista(t_lista* lista, void* dato, unsigned tam_dato)
 }
 
 
-int sacar_de_lista_posicion(t_lista* lista, void* dato, unsigned tam_dato,int posicion)
+int sacarDeListaPosicion(tLista* lista, void* dato, unsigned tamDato,int posicion)
 {
     int i;
 
@@ -63,19 +63,19 @@ int sacar_de_lista_posicion(t_lista* lista, void* dato, unsigned tam_dato,int po
     for(i=0; i < posicion; i++)
         lista = &(*lista)->sig;
 
-    t_nodo* sacar = *lista;
+    tNodo* sacar = *lista;
 
-    memcpy(dato, sacar->dato, MIN(tam_dato, sacar->tam));
+    memcpy(dato, sacar->dato, MIN(tamDato, sacar->tam));
     *lista = sacar->sig;
     free(sacar->dato);
     free(sacar);
     return TODO_OK;
 }
 
-int sacar_de_lista_clave(t_lista* pLista,void* dato, unsigned tam_dato,const void* clave, tCMP cmp)
+int sacarDeListaClave(tLista* pLista,void* dato, unsigned tamDato,const void* clave, tCMP cmp)
 {
 
-    t_nodo* elim;
+    tNodo* elim;
     if(! *pLista)
         return LISTA_VACIA;
 
@@ -88,7 +88,7 @@ int sacar_de_lista_clave(t_lista* pLista,void* dato, unsigned tam_dato,const voi
 
     elim = *pLista;
     *pLista = elim->sig;
-    memcpy(dato,elim->dato,tam_dato);
+    memcpy(dato,elim->dato,tamDato);
 
     free(elim->dato);
     free(elim);
@@ -98,9 +98,9 @@ int sacar_de_lista_clave(t_lista* pLista,void* dato, unsigned tam_dato,const voi
 }
 
 
-void vaciar_lista(t_lista* lista)
+void vaciarLista(tLista* lista)
 {
-    t_nodo* elim;
+    tNodo* elim;
     while(*lista != NULL)
     {
         elim = *lista;
@@ -111,7 +111,7 @@ void vaciar_lista(t_lista* lista)
     return;
 }
 
-int map_lista(t_lista* lista, tACCION accion)
+int mapLista(tLista* lista, tACCION accion)
 {
     int cont = 0;
     while(*lista != NULL)
@@ -123,37 +123,37 @@ int map_lista(t_lista* lista, tACCION accion)
     return cont;
 }
 
-int insertar_ordenado(t_lista* lista, void* dato, unsigned tam_dato, int comp(const void*, const void*))
+int insertarOrdenado(tLista* lista, void* dato, unsigned tamDato, int comp(const void*, const void*))
 {
-    t_nodo* nuevo_nodo;
+    tNodo* nuevoNodo;
 
 
     while(*lista != NULL && comp((*lista)->dato, dato) < 0)
         lista = &(*lista)->sig;
 
 
-    nuevo_nodo = malloc(sizeof(t_nodo));
-    if(!nuevo_nodo)
+    nuevoNodo = malloc(sizeof(tNodo));
+    if(!nuevoNodo)
         return SIN_ESPACIO;
 
-    nuevo_nodo->dato = malloc(tam_dato);
-    if(!nuevo_nodo->dato)
+    nuevoNodo->dato = malloc(tamDato);
+    if(!nuevoNodo->dato)
     {
-        free(nuevo_nodo);
+        free(nuevoNodo);
         return SIN_ESPACIO;
     }
 
-    memcpy(nuevo_nodo->dato, dato, tam_dato);
-    nuevo_nodo->tam = tam_dato;
-    nuevo_nodo->sig = *lista;
-    *lista = nuevo_nodo;
+    memcpy(nuevoNodo->dato, dato, tamDato);
+    nuevoNodo->tam = tamDato;
+    nuevoNodo->sig = *lista;
+    *lista = nuevoNodo;
 
     return TODO_OK;
 }
 
-int insertar_ordenado_sin_dupli(t_lista* lista, void* dato, unsigned tam_dato, int comp(const void*, const void*))
+int insertarOrdenadoSinDupli(tLista* lista, void* dato, unsigned tamDato, int comp(const void*, const void*))
 {
-    t_nodo* nuevo_nodo;
+    tNodo* nuevoNodo;
     int cmp = 0;
 
 
@@ -164,37 +164,37 @@ int insertar_ordenado_sin_dupli(t_lista* lista, void* dato, unsigned tam_dato, i
         return DUPLICADO;
 
 
-    nuevo_nodo = malloc(sizeof(t_nodo));
-    if(!nuevo_nodo)
+    nuevoNodo = malloc(sizeof(tNodo));
+    if(!nuevoNodo)
         return SIN_ESPACIO;
 
-    nuevo_nodo->dato = malloc(tam_dato);
-    if(!nuevo_nodo->dato)
+    nuevoNodo->dato = malloc(tamDato);
+    if(!nuevoNodo->dato)
     {
-        free(nuevo_nodo);
+        free(nuevoNodo);
         return SIN_ESPACIO;
     }
 
-    memcpy(nuevo_nodo->dato, dato, tam_dato);
-    nuevo_nodo->tam = tam_dato;
-    nuevo_nodo->sig = *lista;
-    *lista = nuevo_nodo;
+    memcpy(nuevoNodo->dato, dato, tamDato);
+    nuevoNodo->tam = tamDato;
+    nuevoNodo->sig = *lista;
+    *lista = nuevoNodo;
 
     return TODO_OK;
 }
 
-//void ordenar_lista(t_lista* lista, int (comparar)(const void*, const void*, unsigned))
+//void ordenarLista(tLista* lista, int (comparar)(const void*, const void*, unsigned))
 //{
 //
-//    t_lista nuevaLista = NULL;
-//    t_nodo actual = *lista;
+//    tLista nuevaLista = NULL;
+//    tNodo actual = *lista;
 //
 //    while (actual != NULL)
 //    {
-//        t_nodo* menorNodo = actual;
-//        t_nodo* nodoAnteriorMenor = NULL;
-//        t_nodo* temp = actual->sig;
-//        t_nodo* nodoAnteriorTemp = actual;
+//        tNodo* menorNodo = actual;
+//        tNodo* nodoAnteriorMenor = NULL;
+//        tNodo* temp = actual->sig;
+//        tNodo* nodoAnteriorTemp = actual;
 //
 //        // Buscar el nodo con el menor dato en la parte no ordenada de la lista
 //        while (temp != NULL)
@@ -228,11 +228,11 @@ int insertar_ordenado_sin_dupli(t_lista* lista, void* dato, unsigned tam_dato, i
 //    *lista = nuevaLista;
 //}
 
-void ordenar_lista(t_lista* lista, int comp(const void*, const void*))
+void ordenarLista(tLista* lista, int comp(const void*, const void*))
 {
     int ordenado;
-    t_nodo** nodo;
-    t_nodo* aux;
+    tNodo** nodo;
+    tNodo* aux;
 
     do
     {
@@ -261,49 +261,49 @@ void ordenar_lista(t_lista* lista, int comp(const void*, const void*))
 
 
 
-void crear_pila(t_pila* p)
+void crearPila(tPila* p)
 {
     *p  = NULL;
 }
 
-int pila_vacia(const t_pila *p)
+int pilaVacia(const tPila *p)
 {
     return *p == NULL;
 }
 
-int pila_llena(const t_pila *p, unsigned tamDato)
+int pilaLlena(const tPila *p, unsigned tamDato)
 {
     return 0;
 }
 
 
-int apilar(t_pila *p, const void *dato, unsigned tamDato)
+int apilar(tPila *p, const void *dato, unsigned tamDato)
 {
-    t_nodo* nuevo_nodo;
+    tNodo* nuevoNodo;
 
-    nuevo_nodo = malloc(sizeof(t_nodo));
-    if(!nuevo_nodo)
+    nuevoNodo = malloc(sizeof(tNodo));
+    if(!nuevoNodo)
         return SIN_MEMORIA;
 
-    nuevo_nodo->dato = malloc(sizeof(tamDato));
-    if(!nuevo_nodo->dato)
+    nuevoNodo->dato = malloc(sizeof(tamDato));
+    if(!nuevoNodo->dato)
     {
-        free(nuevo_nodo);
+        free(nuevoNodo);
         return SIN_MEMORIA;
     }
 
-    memcpy(nuevo_nodo->dato, dato, tamDato);
-    nuevo_nodo->tam = tamDato;
+    memcpy(nuevoNodo->dato, dato, tamDato);
+    nuevoNodo->tam = tamDato;
 
-    nuevo_nodo->sig = *p;
-    *p = nuevo_nodo;
+    nuevoNodo->sig = *p;
+    *p = nuevoNodo;
 
     return TODO_OK;
 }
 
-int desapilar(t_pila *p, void *dato, unsigned tamDato)
+int desapilar(tPila *p, void *dato, unsigned tamDato)
 {
-    t_nodo* elim = *p;
+    tNodo* elim = *p;
 
     if(elim == NULL)
         return PILA_VACIA;
@@ -317,9 +317,9 @@ int desapilar(t_pila *p, void *dato, unsigned tamDato)
     return TODO_OK;
 }
 
-int ver_tope_pila(const t_pila *p, void *dato, unsigned tamDato)
+int verTopePila(const tPila *p, void *dato, unsigned tamDato)
 {
-    t_nodo* nodo = *p;
+    tNodo* nodo = *p;
 
     if(nodo == NULL)
         return PILA_VACIA;
@@ -329,9 +329,9 @@ int ver_tope_pila(const t_pila *p, void *dato, unsigned tamDato)
 
 }
 
-void vaciar_pila(t_pila *p)
+void vaciarPila(tPila *p)
 {
-    t_nodo* elim;
+    tNodo* elim;
 
     while(*p != NULL)
     {
