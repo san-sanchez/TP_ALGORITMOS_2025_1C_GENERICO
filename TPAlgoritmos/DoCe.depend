@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1748131358 source:c:\users\user\downloads\doce_turnosydif\funciones.c
+	"funciones.h"
+
+1748032873 c:\users\user\downloads\doce_turnosydif\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1748129824 c:\users\user\downloads\doce_turnosydif\funciones.h
+	<time.h>
+	<ctype.h>
+	"lista.h"
+	"cola.h"
+	"pila.h"
+
+1748032691 source:c:\users\user\downloads\doce_turnosydif\lista.c
+	"lista.h"
+
+1748030083 source:c:\users\user\downloads\doce_turnosydif\main.c
+	"lista.h"
+	"funciones.h"
+
+1748039072 source:c:\users\user\downloads\doce_turnosydif\cola.c
+	"cola.h"
+
+1748033844 c:\users\user\downloads\doce_turnosydif\cola.h
+	"lista.h"
+
+1748032873 c:\users\user\downloads\doce_turnosydif\pila.h
+	"funciones.h"
+
+1748125782 source:c:\users\user\downloads\doce_turnosydif\funcionesbot.c
+	"funciones.h"
+
+1748036228 source:c:\users\user\downloads\doce_turnosydif\funcionesinterfaz.c
+	"funciones.h"
+
+1748129807 source:c:\users\user\downloads\doce_turnosydif\funcionesmazo.c
+	"funciones.h"
+
+1748032691 source:c:\users\user\downloads\doce_turnosydif\pila.c
+	"pila.h"
+

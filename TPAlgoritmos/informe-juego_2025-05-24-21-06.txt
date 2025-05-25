@@ -1,0 +1,112 @@
+Turno 1: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 0, puntos del Bot: 1
+Turno 2: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 0, puntos del Bot: 1
+Turno 3: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 1, puntos del Bot: 1
+Turno 4: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 0, puntos del Bot: 1
+Turno 5: El jugador Nahuel jugó la carta ESPEJO. Puntos de Nahuel: 1, puntos del Bot: 0
+Turno 6: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 0, puntos del Bot: 0
+Turno 7: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 2, puntos del Bot: 0
+Turno 8: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 2, puntos del Bot: 2
+Turno 9: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 4, puntos del Bot: 2
+Turno 10: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 4, puntos del Bot: 3
+Turno 11: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 4, puntos del Bot: 2
+Turno 12: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 3, puntos del Bot: 2
+Turno 13: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 5, puntos del Bot: 2
+Turno 14: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 5, puntos del Bot: 3
+Turno 15: El jugador Nahuel jugó la carta MENOS 2. Puntos de Nahuel: 5, puntos del Bot: 1
+Turno 16: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 5, puntos del Bot: 2
+Turno 17: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 5, puntos del Bot: 2
+Turno 18: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 6, puntos del Bot: 2
+Turno 19: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 6, puntos del Bot: 4
+Turno 20: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 7, puntos del Bot: 4
+Turno 21: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 7, puntos del Bot: 4
+Turno 22: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 5, puntos del Bot: 4
+Turno 23: El jugador Nahuel jugó la carta ESPEJO. Puntos de Nahuel: 7, puntos del Bot: 2
+Turno 24: El jugador Bot jugó la carta ESPEJO. Puntos de Nahuel: 7, puntos del Bot: 2
+Turno 25: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 8, puntos del Bot: 2
+Turno 26: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 8, puntos del Bot: 3
+Turno 27: El jugador Nahuel jugó la carta MENOS 2. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 28: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 29: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 30: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 8, puntos del Bot: 2
+Turno 31: El jugador Nahuel jugó la carta MENOS 2. Puntos de Nahuel: 8, puntos del Bot: 0
+Turno 32: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 33: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 34: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 35: El jugador Bot jugó la carta ESPEJO. Puntos de Nahuel: 5, puntos del Bot: 1
+Turno 36: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 7, puntos del Bot: 1
+Turno 37: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 6, puntos del Bot: 1
+Turno 38: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 39: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 40: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 4, puntos del Bot: 0
+Turno 41: El jugador Nahuel jugó la carta ESPEJO. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 42: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 6, puntos del Bot: 1
+Turno 43: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 44: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 5, puntos del Bot: 0
+Turno 45: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 46: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 5, puntos del Bot: 0
+Turno 47: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 7, puntos del Bot: 0
+Turno 48: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 5, puntos del Bot: 0
+Turno 49: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 50: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 6, puntos del Bot: 2
+Turno 51: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 6, puntos del Bot: 2
+Turno 52: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 6, puntos del Bot: 2
+Turno 53: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 7, puntos del Bot: 2
+Turno 54: El jugador Bot jugó la carta ESPEJO. Puntos de Nahuel: 7, puntos del Bot: 2
+Turno 55: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 8, puntos del Bot: 2
+Turno 56: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 8, puntos del Bot: 2
+Turno 57: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 8, puntos del Bot: 4
+Turno 58: El jugador Nahuel jugó la carta MENOS 2. Puntos de Nahuel: 8, puntos del Bot: 2
+Turno 59: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 7, puntos del Bot: 2
+Turno 60: El jugador Nahuel jugó la carta ESPEJO. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 61: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 8, puntos del Bot: 2
+Turno 62: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 63: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 6, puntos del Bot: 1
+Turno 64: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 65: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 4, puntos del Bot: 0
+Turno 66: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 4, puntos del Bot: 0
+Turno 67: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 6, puntos del Bot: 0
+Turno 68: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 6, puntos del Bot: 1
+Turno 69: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 70: El jugador Bot jugó la carta ESPEJO. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 71: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 9, puntos del Bot: 1
+Turno 72: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 9, puntos del Bot: 3
+Turno 73: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 10, puntos del Bot: 3
+Turno 74: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 10, puntos del Bot: 5
+Turno 75: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 11, puntos del Bot: 5
+Turno 76: El jugador Bot jugó la carta ESPEJO. Puntos de Nahuel: 11, puntos del Bot: 5
+Turno 77: El jugador Nahuel jugó la carta MENOS 2. Puntos de Nahuel: 11, puntos del Bot: 3
+Turno 78: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 11, puntos del Bot: 3
+Turno 79: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 9, puntos del Bot: 3
+Turno 80: El jugador Nahuel jugó la carta MENOS 2. Puntos de Nahuel: 9, puntos del Bot: 1
+Turno 81: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 82: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 9, puntos del Bot: 1
+Turno 83: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 9, puntos del Bot: 2
+Turno 84: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 10, puntos del Bot: 2
+Turno 85: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 9, puntos del Bot: 2
+Turno 86: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 11, puntos del Bot: 2
+Turno 87: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 11, puntos del Bot: 3
+Turno 88: El jugador Nahuel jugó la carta MENOS 2. Puntos de Nahuel: 11, puntos del Bot: 1
+Turno 89: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 9, puntos del Bot: 1
+Turno 90: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 9, puntos del Bot: 0
+Turno 91: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 9, puntos del Bot: 0
+Turno 92: El jugador Bot jugó la carta ESPEJO. Puntos de Nahuel: 9, puntos del Bot: 0
+Turno 93: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 9, puntos del Bot: 0
+Turno 94: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 9, puntos del Bot: 1
+Turno 95: El jugador Nahuel jugó la carta MAS 1. Puntos de Nahuel: 10, puntos del Bot: 1
+Turno 96: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 10, puntos del Bot: 3
+Turno 97: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 10, puntos del Bot: 3
+Turno 98: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 10, puntos del Bot: 2
+Turno 99: El jugador Bot jugó la carta REPETIR TURNO. Puntos de Nahuel: 10, puntos del Bot: 2
+Turno 100: El jugador Bot jugó la carta MENOS 1. Puntos de Nahuel: 9, puntos del Bot: 2
+Turno 101: El jugador Nahuel jugó la carta ESPEJO. Puntos de Nahuel: 10, puntos del Bot: 1
+Turno 102: El jugador Bot jugó la carta MENOS 2. Puntos de Nahuel: 8, puntos del Bot: 1
+Turno 103: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 10, puntos del Bot: 1
+Turno 104: El jugador Bot jugó la carta ESPEJO. Puntos de Nahuel: 10, puntos del Bot: 1
+Turno 105: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 10, puntos del Bot: 1
+Turno 106: El jugador Bot jugó la carta MAS 2. Puntos de Nahuel: 10, puntos del Bot: 3
+Turno 107: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 10, puntos del Bot: 3
+Turno 108: El jugador Nahuel jugó la carta REPETIR TURNO. Puntos de Nahuel: 10, puntos del Bot: 3
+Turno 109: El jugador Nahuel jugó la carta MENOS 1. Puntos de Nahuel: 10, puntos del Bot: 2
+Turno 110: El jugador Bot jugó la carta MAS 1. Puntos de Nahuel: 10, puntos del Bot: 3
+Turno 111: El jugador Nahuel jugó la carta MAS 2. Puntos de Nahuel: 12, puntos del Bot: 3
+El jugador Nahuel ha ganado la partida logrando llegar a 12 puntos
