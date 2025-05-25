@@ -39,33 +39,32 @@ typedef struct
 {
     char nombre[36];
     int puntos;
-    t_lista mano;
+    tLista mano;
     int cantCartasEnMano;
 
 } tJugador;
 
-int  iniciar_juego();
-void cargar_mazo(t_lista* mazo);
-void poner_cartas_mazo(t_lista* mazo,int  carta,int cantidad);
-void mezclar_mazo(t_lista* lista);
-int rand_num(const void* a, const void* b);
+int  iniciarJuego();
+void cargarMazo(tLista* mazo);
+void ponerCartasMazo(tLista* mazo,int  carta,int cantidad);
+void mezclarMazo(tLista* lista);
 
-void interfaz(int puntosBot, tJugador jugador, t_pila* descarte,int turno_actual,int quien_tira);
-void imprimir_carta(int carta);
+void interfaz(int puntosBot, tJugador jugador, tPila* descarte,int turnoActual,int quienTira);
+void imprimirCarta(int carta);
 
-int turno_jugador(t_lista* mano);
+int turnoJugador(tLista* mano);
 
-int turno_bot(int puntosBot, t_lista* mano, char dif, int puntosJugador, t_pila* descarte);
-int dificultad_facil(t_lista* mano);
-int dificultad_media(int puntosBot, t_lista* mano, int puntosJugador);
-int dificultad_dificil(int puntosBot, t_lista* mano, int puntosJugador, t_pila* descarte);
+int turnoBot(int puntosBot, tLista* mano, char dif, int puntosJugador, tPila* descarte);
+int dificultadFacil(tLista* mano);
+int dificultadMedia(int puntosBot, tLista* mano, int puntosJugador);
+int dificultadDificil(int puntosBot, tLista* mano, int puntosJugador, tPila* descarte);
 
-void efectos_cartas(int* puntosTirador, int* puntosRival, int carta, t_pila* descarte);
+void efectosCartas(int* puntosTirador, int* puntosRival, int carta, tPila* descarte);
 
 
 char menu(const char* msj,const char* opciones);
-void reemplazar_salto(char* s);
-int comparar_cartas(const void* a,const void* b);
-int mostrar_mano(void* mano);
-int contar_cartas_buenas(t_lista* mano);
+void reemplazarSalto(char* s);
+int compararCartas(const void* a,const void* b);
+int mostrarMano(void* mano);
+int contarCartasBuenas(tLista* mano);
 #endif // FUNCIONES_H_INCLUDED

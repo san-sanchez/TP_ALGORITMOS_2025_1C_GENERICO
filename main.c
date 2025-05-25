@@ -3,25 +3,24 @@
 #include "funciones.h"
 
 
-void mostrarCarta(t_nodo* nodo)
+void mostrarCarta(tNodo* nodo)
 {
     printf("%d ",*(int*)(nodo->dato));
 }
 
 int main()
 {
-//    t_lista mazo;
-//    crear_lista(&mazo);
-//    t_pila descarte;
-//    crear_pila(&descarte);
+//    tLista mazo;
+//    crearLista(&mazo);
+//    tPila descarte;
+//    crearPila(&descarte);
 //
-//    cargar_mazo(&mazo);
-//    map_lista(&mazo,mostrarCarta);
+//    cargarMazo(&mazo);
+//    mapLista(&mazo,mostrarCarta);
 //    puts("\n---------");
 
-//    ordenar_lista(&mazo,rand_num);
-//    mezclar_mazo(&mazo);
-//    map_lista(&mazo,mostrarCarta);
+//    mezclarMazo(&mazo);
+//    mapLista(&mazo,mostrarCarta);
 
     char op;
     printf("%s\n",TITULO);
@@ -30,7 +29,7 @@ int main()
     {
     case 'a':
         system("cls");
-        iniciar_juego();
+        iniciarJuego();
         break;
     case 'b':
         system("cls");
