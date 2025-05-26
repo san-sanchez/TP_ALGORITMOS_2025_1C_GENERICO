@@ -14,7 +14,7 @@ void imprimir_carta(int carta)
 {
     printf("\t---------\n");
     if(carta == ESPEJO)
-        printf("\t|ESPEJO |\n");
+        printf("\t|ESPEJO|\n");
 
     else if(carta == REPETIR)
         printf("\t|REPETIR|\n");

@@ -7,7 +7,7 @@ int  iniciar_juego()
     t_lista mazo, manoBot;
     t_pila descarte;
     tCola turnos;
-    int puntosBot = 0,turno = 1,quienTira,ultimaCarta,cartaTirada, carta;
+    int puntosBot = 0,turno = 1,quienTira,cartaTirada, carta, ultimaCarta;
     char dificulad;
 
     printf("%s\n",TITULO);
@@ -43,13 +43,14 @@ int  iniciar_juego()
             efectos_cartas(&puntosBot,&jugador.puntos,cartaTirada,&descarte);
 
             if(eliminar_de_lista(&mazo, &carta, sizeof(int)) == LISTA_VACIA){
+                desapilar(&descarte, &ultimaCarta, sizeof(int));///saco la ultima carta que tire
                 nuevo_mazo(&mazo, &descarte);
                 eliminar_de_lista(&mazo, &carta, sizeof(int));
+                apilar(&descarte, &ultimaCarta, sizeof(int));///y la dejo de nuevo en el descarte
             }
             agregar_a_lista(&manoBot,&carta,sizeof(int));///Para probar SACAR despues
 
-            ver_tope_pila(&descarte,&ultimaCarta,sizeof(int));///Para ver si repite el turno
-            if(ultimaCarta != REPETIR)
+            if(cartaTirada != REPETIR)
             {
                 quienTira = TURNO_DEL_JUGADOR;
             }
@@ -66,13 +67,14 @@ int  iniciar_juego()
             efectos_cartas(&jugador.puntos,&puntosBot,cartaTirada,&descarte);
 
             if(eliminar_de_lista(&mazo, &carta, sizeof(int)) == LISTA_VACIA){
+                desapilar(&descarte, &ultimaCarta, sizeof(int));///saco la ultima carta que tire
                 nuevo_mazo(&mazo, &descarte);
                 eliminar_de_lista(&mazo, &carta, sizeof(int));
+                apilar(&descarte, &ultimaCarta, sizeof(int));///y la dejo de nuevo en el descarte
             }
             agregar_a_lista(&jugador.mano,&carta,sizeof(int));///Para probar SACAR despues
 
-            ver_tope_pila(&descarte,&ultimaCarta,sizeof(int));
-            if(ultimaCarta != REPETIR)
+            if(cartaTirada != REPETIR)
             {
                 quienTira = TURNO_DEL_BOT;
             }
@@ -94,7 +96,6 @@ int  iniciar_juego()
         printf("\tGANASTE :)\n");
         printf("\tGANADOR %s\n",jugador.nombre);
     }
-
     generarInforme(&turnos);
     vaciarCola(&turnos);
     vaciar_lista(&mazo);
@@ -103,6 +104,8 @@ int  iniciar_juego()
     vaciar_lista(&jugador.mano);
     vaciar_lista(&manoBot);
 
+    system("pause");
+    system("cls");
     return TODO_OK;
 }
 
@@ -131,7 +134,7 @@ int turno_jugador(t_lista* mano)
 
 void efectos_cartas(int* puntosTirador, int* puntosRival, int carta, t_pila* descarte)
 {
-    int ultimaTirada;
+    int ultimaTirada=1;// = 1 por si no hay nada en el descarte
     switch(carta){
         case ESPEJO:
             ver_tope_pila(descarte,&ultimaTirada,sizeof(int));///Se fija si la ultima carta es negativa, para aplicar el efecto
@@ -153,27 +156,6 @@ void efectos_cartas(int* puntosTirador, int* puntosRival, int carta, t_pila* des
             *puntosRival += carta;
             break;
     }
-//    if( carta == ESPEJO )
-//    {
-//        ver_tope_pila(descarte,&ultimaTirada,sizeof(int));///Se fija si la ultima carta es negativa, para aplicar el efecto
-//
-//        if(ultimaTirada < 0)///Tiene una falla
-//        {
-//            *puntosRival += ultimaTirada;///le resta los puntos al rival
-//            *puntosTirador -= ultimaTirada;///se los "suma" al tirador de la carta espejo
-//        }
-//    }
-//
-//    if( carta == MAS1 || carta == MAS2)
-//    {
-//        *puntosTirador += carta;
-//    }
-//
-//    if( carta == MENOS1 || carta == MENOS2)
-//    {
-//        *puntosRival += carta;
-//    }
-
     if(*puntosRival < 0)
         *puntosRival = 0;
 

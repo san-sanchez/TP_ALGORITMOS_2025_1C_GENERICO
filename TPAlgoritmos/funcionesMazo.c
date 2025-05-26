@@ -76,9 +76,9 @@ int repartir_cartas(t_lista* mazo, tJugador* jugador, t_lista* manoBot){
     int i, carta;
     for(i=0; i<3; i++)
     {
-        sacar_de_lista_posicion(mazo, &carta, sizeof(int), 1);
-        agregar_a_lista(&(jugador->mano),&carta,sizeof(int));
-        sacar_de_lista_posicion(mazo, &carta, sizeof(int), 1);
+        eliminar_de_lista(mazo, &carta, sizeof(int));
+        agregar_a_lista(&(jugador->mano),&carta, sizeof(int));
+        eliminar_de_lista(mazo, &carta, sizeof(int));
         agregar_a_lista(manoBot,&carta,sizeof(int));
     }
     return TODO_OK;
