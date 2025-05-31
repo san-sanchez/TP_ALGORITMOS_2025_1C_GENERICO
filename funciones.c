@@ -25,7 +25,7 @@ int  iniciar_juego()
     crear_pila(&descarte);
 
     cargar_mazo(&mazo);///pone las cartas en el mazo
-    mezclar_mazo(&mazo);
+    mezclar_mazo(&mazo,MAXIMO_CARTAS);
 
     crear_lista(&jugador.mano);
     crear_lista(&manoBot);

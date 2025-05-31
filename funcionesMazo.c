@@ -23,56 +23,38 @@ int rand_num(const void* a, const void* b)
     return i;
 }
 
-void mezclar_mazo(t_lista* lista)
+void mezclar_mazo(t_lista* mazo, int cantidad)
 {
-    // Primero, contar la cantidad de elementos en la lista
-    int cantidad = 0, i, j;
-    t_nodo* actual = *lista, **arreglo;
 
-    while(actual != NULL)
-    {
-        cantidad++;
-        actual = actual->sig;
-    }
+    t_lista mazoMezclado;
+    int carta, posicion;
 
-    // Inicializar semilla para números aleatorios
+    // inicializar la semilla para numeros aleatorios
     srand(time(NULL));
 
-    // Convertir la lista en un arreglo temporal de punteros a nodos
-    arreglo = malloc(cantidad * sizeof(t_nodo*));
-    actual = *lista;
+    // crear nueva lista vacia para el mazo mezclado
+    crear_lista(&mazoMezclado);
 
-    for(i=0;i<cantidad;i++)
+    // mientras haya cartas en el mazo
+    while (cantidad > 0)
     {
-        arreglo[i] = actual;
-        actual = actual->sig;
+        posicion = rand() % cantidad;
+
+        // sacar una carta de una posicion aleatoria
+        if (sacar_de_lista_posicion(mazo, &carta, sizeof(carta), posicion) == TODO_OK)
+        {
+            // agregarla a la nueva lista
+            agregar_a_lista(&mazoMezclado, &carta, sizeof(carta));
+        }
+
+        cantidad--;
     }
 
-    // Aplicar el algoritmo Fisher-Yates
-    for(i=cantidad-1;i>0;i--)
-    {
-        j = rand() % (i + 1); // Índice aleatorio entre 0 e i
-
-        // Intercambiar los elementos i y j
-        t_nodo* temp = arreglo[i];
-        arreglo[i] = arreglo[j];
-        arreglo[j] = temp;
-    }
-
-    // Reconstruir la lista con el nuevo orden
-    *lista = arreglo[0];
-    actual = *lista;
-
-    for(i=1;i<cantidad;i++)
-    {
-        actual->sig = arreglo[i];
-        actual = actual->sig;
-    }
-    actual->sig = NULL;
-
-    free(arreglo);
+    // actualizar la lista original con la nueva
+    *mazo = mazoMezclado;
 }
-int repartir_cartas(t_lista* mazo, tJugador* jugador, t_lista* manoBot){
+int repartir_cartas(t_lista* mazo, tJugador* jugador, t_lista* manoBot)
+{
     int i, carta;
     for(i=0; i<3; i++)
     {
@@ -83,10 +65,12 @@ int repartir_cartas(t_lista* mazo, tJugador* jugador, t_lista* manoBot){
     }
     return TODO_OK;
 }
-void nuevo_mazo(t_lista* mazo, t_pila* descarte){
+void nuevo_mazo(t_lista* mazo, t_pila* descarte)
+{
     int carta;
-    while(desapilar(descarte, &carta, sizeof(int)) == TODO_OK){
+    while(desapilar(descarte, &carta, sizeof(int)) == TODO_OK)
+    {
         agregar_a_lista(mazo, &carta, sizeof(int));
     }
-    mezclar_mazo(mazo);
+    mezclar_mazo(mazo,CARTAS_DESCARTE);
 }

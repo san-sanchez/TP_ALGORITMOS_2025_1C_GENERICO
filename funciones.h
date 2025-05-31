@@ -37,6 +37,9 @@
 #define PUNTOS_MAX 12
 #define CERCA_GANAR 8
 #define CARTAS_BUENAS 1
+#define MAXIMO_CARTAS 40
+#define CARTAS_DESCARTE 33
+
 
 typedef struct{
     char nombreJugador[36];
@@ -77,7 +80,7 @@ int contar_cartas_buenas(t_lista* mano);
 ///funcionesMazo.c
 void cargar_mazo(t_lista* mazo);
 void poner_cartas_mazo(t_lista* mazo,int  carta,int cantidad);
-void mezclar_mazo(t_lista* lista);
+void mezclar_mazo(t_lista* mazo, int cantidad);
 int rand_num(const void* a, const void* b);
 int repartir_cartas(t_lista* mazo, tJugador* jugador, t_lista* manoBot);
 void nuevo_mazo(t_lista* mazo, t_pila* descarte);

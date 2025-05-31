@@ -3,8 +3,8 @@
 int turno_bot(int puntosBot, t_lista* mano, char dif, int puntosJugador, t_pila* descarte)
 {
     int cartaTirada;
-    printf("\nMano bot actual:");
-    map_lista(mano,mostrar_mano);
+//    printf("\nMano bot actual:");
+//    map_lista(mano,mostrar_mano);
     printf("\n");
     switch(tolower(dif))
     {
@@ -18,7 +18,6 @@ int turno_bot(int puntosBot, t_lista* mano, char dif, int puntosJugador, t_pila*
         cartaTirada = dificultad_dificil(puntosBot,mano,puntosJugador,descarte);
         break;
     }
-    ///FALTA DARLE LA OTRA CARTA
     return cartaTirada;
 }
 
