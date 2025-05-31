@@ -7,7 +7,7 @@ int  iniciar_juego()
     t_lista mazo, manoBot;
     t_pila descarte;
     tCola turnos;
-    int puntosBot = 0,turno = 1,quienTira,cartaTirada, carta, ultimaCarta;
+    int puntosBot = 0,puntosBotAnterior = 0,turno = 1,quienTira,cartaTirada, carta, ultimaCarta;
     char dificulad;
 
     printf("%s\n",TITULO);
@@ -19,7 +19,7 @@ int  iniciar_juego()
     printf("%s\n",TITULO);
     dificulad=menu(MSJ_DIFICULTAD,OPC_DIF);
     jugador.puntos=0;
-
+    jugador.puntosAnterior = jugador.puntos;
     crearCola(&turnos);
     crear_lista(&mazo);
     crear_pila(&descarte);
@@ -33,22 +33,25 @@ int  iniciar_juego()
     repartir_cartas(&mazo, &jugador, &manoBot);
     quienTira = rand() % 2;
 
-    do{
+    do
+    {
         system("cls");
         printf("%s\n",TITULO);
         interfaz(puntosBot,jugador,&descarte,turno,quienTira);
         if( quienTira == TURNO_DEL_BOT)
         {
             cartaTirada = turno_bot(puntosBot,&manoBot,dificulad,jugador.puntos,&descarte);
-            efectos_cartas(&puntosBot,&jugador.puntos,cartaTirada,&descarte);
+            jugador.puntosAnterior = jugador.puntos;
+            efectos_cartas(&puntosBot,&jugador.puntos,puntosBotAnterior,jugador.puntosAnterior,cartaTirada,&descarte);
 
-            if(eliminar_de_lista(&mazo, &carta, sizeof(int)) == LISTA_VACIA){
+            if(eliminar_de_lista(&mazo, &carta, sizeof(int)) == LISTA_VACIA)
+            {
                 desapilar(&descarte, &ultimaCarta, sizeof(int));///saco la ultima carta que tire
                 nuevo_mazo(&mazo, &descarte);
                 eliminar_de_lista(&mazo, &carta, sizeof(int));
                 apilar(&descarte, &ultimaCarta, sizeof(int));///y la dejo de nuevo en el descarte
             }
-            agregar_a_lista(&manoBot,&carta,sizeof(int));///Para probar SACAR despues
+            agregar_a_lista(&manoBot,&carta,sizeof(int));
 
             if(cartaTirada != REPETIR)
             {
@@ -64,15 +67,17 @@ int  iniciar_juego()
         {
 
             cartaTirada = turno_jugador(&jugador.mano);
-            efectos_cartas(&jugador.puntos,&puntosBot,cartaTirada,&descarte);
+            puntosBotAnterior = puntosBot;
+            efectos_cartas(&jugador.puntos,&puntosBot,jugador.puntosAnterior,puntosBotAnterior,cartaTirada,&descarte);
 
-            if(eliminar_de_lista(&mazo, &carta, sizeof(int)) == LISTA_VACIA){
+            if(eliminar_de_lista(&mazo, &carta, sizeof(int)) == LISTA_VACIA)
+            {
                 desapilar(&descarte, &ultimaCarta, sizeof(int));///saco la ultima carta que tire
                 nuevo_mazo(&mazo, &descarte);
                 eliminar_de_lista(&mazo, &carta, sizeof(int));
                 apilar(&descarte, &ultimaCarta, sizeof(int));///y la dejo de nuevo en el descarte
             }
-            agregar_a_lista(&jugador.mano,&carta,sizeof(int));///Para probar SACAR despues
+            agregar_a_lista(&jugador.mano,&carta,sizeof(int));
 
             if(cartaTirada != REPETIR)
             {
@@ -81,7 +86,8 @@ int  iniciar_juego()
             registrarTurno(&turnos, &jugador, puntosBot, turno, cartaTirada, TURNO_DEL_JUGADOR);
         }
         turno++;
-    }while(jugador.puntos < PUNTOS_MAX && puntosBot < PUNTOS_MAX);
+    }
+    while(jugador.puntos < PUNTOS_MAX && puntosBot < PUNTOS_MAX);
     if(puntosBot >= PUNTOS_MAX)
     {
         system("cls");
@@ -132,29 +138,31 @@ int turno_jugador(t_lista* mano)
 }
 
 
-void efectos_cartas(int* puntosTirador, int* puntosRival, int carta, t_pila* descarte)
+void efectos_cartas(int* puntosTirador, int* puntosRival,int puntosAntTirador, int puntosAntRival, int carta, t_pila* descarte)
 {
     int ultimaTirada=1;// = 1 por si no hay nada en el descarte
-    switch(carta){
-        case ESPEJO:
-            ver_tope_pila(descarte,&ultimaTirada,sizeof(int));///Se fija si la ultima carta es negativa, para aplicar el efecto
-
-            if(ultimaTirada < 0)///Tiene una falla
-            {
-                *puntosRival += ultimaTirada;///le resta los puntos al rival
-                *puntosTirador -= ultimaTirada;///se los "suma" al tirador de la carta espejo
-            }
+    switch(carta)
+    {
+    case ESPEJO:
+        if(ver_tope_pila(descarte,&ultimaTirada,sizeof(int))==PILA_VACIA)///Se fija si la ultima carta es negativa, para aplicar el efecto
             break;
 
-        case MAS1:
-        case MAS2:
-            *puntosTirador += carta;
-            break;
+        if(ultimaTirada < 0)
+        {
+            *puntosRival += (*puntosTirador-puntosAntTirador);///le resta los puntos al rival
+            *puntosTirador = puntosAntTirador;
+        }
+        break;
 
-        case MENOS1:
-        case MENOS2:
-            *puntosRival += carta;
-            break;
+    case MAS1:
+    case MAS2:
+        *puntosTirador += carta;
+        break;
+
+    case MENOS1:
+    case MENOS2:
+        *puntosRival += carta;
+        break;
     }
     if(*puntosRival < 0)
         *puntosRival = 0;
@@ -184,13 +192,15 @@ int comparar_cartas(const void* a,const void* b)
 informe-juego_2025-02-01-12-20.txt
 %Y-%m-%d-%H-%M
 */
-void nombreInforme(char* nombre){
+void nombreInforme(char* nombre)
+{
     time_t comienzo = time(NULL);
     struct tm *timepo = localtime(&comienzo);
     strftime(nombre, 40, "informe-juego_%Y-%m-%d-%H-%M.txt", timepo);
 }
 
-void registrarTurno(tCola* turnos, tJugador* jugador, unsigned puntosBot, unsigned numeroTurno, int carta, int quienTira){
+void registrarTurno(tCola* turnos, tJugador* jugador, unsigned puntosBot, unsigned numeroTurno, int carta, int quienTira)
+{
     tTurno jugada;
 
     strcpy(jugada.nombreJugador, jugador->nombre);
@@ -203,7 +213,8 @@ void registrarTurno(tCola* turnos, tJugador* jugador, unsigned puntosBot, unsign
     ponerEnCola(turnos, &jugada, sizeof(tTurno));
 }
 
-int generarInforme(tCola* turnos){
+int generarInforme(tCola* turnos)
+{
     char nombreArchivo[40];
     FILE* p;
     tTurno turno;
@@ -211,55 +222,57 @@ int generarInforme(tCola* turnos){
     p = fopen(nombreArchivo, "wt");
     if(!p)
         return 0;
-    while(sacarDeCola(turnos, &turno, sizeof(tTurno))){
-        switch(turno.carta){
-            case MAS1:
-                if(turno.quienTiro == TURNO_DEL_JUGADOR)
-                    fprintf(p, "Turno %d: El jugador %s jugó la carta MAS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                else
-                    fprintf(p, "Turno %d: El jugador Bot jugó la carta MAS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                break;
+    while(sacarDeCola(turnos, &turno, sizeof(tTurno)))
+    {
+        switch(turno.carta)
+        {
+        case MAS1:
+            if(turno.quienTiro == TURNO_DEL_JUGADOR)
+                fprintf(p, "Turno %d: El jugador %s jugó la carta MAS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            else
+                fprintf(p, "Turno %d: El jugador Bot jugó la carta MAS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            break;
 
-            case MAS2:
-                if(turno.quienTiro == TURNO_DEL_JUGADOR)
-                    fprintf(p, "Turno %d: El jugador %s jugó la carta MAS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                else
-                    fprintf(p, "Turno %d: El jugador Bot jugó la carta MAS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                break;
+        case MAS2:
+            if(turno.quienTiro == TURNO_DEL_JUGADOR)
+                fprintf(p, "Turno %d: El jugador %s jugó la carta MAS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            else
+                fprintf(p, "Turno %d: El jugador Bot jugó la carta MAS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            break;
 
-            case MENOS1:
-                if(turno.quienTiro == TURNO_DEL_JUGADOR)
-                    fprintf(p, "Turno %d: El jugador %s jugó la carta MENOS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                else
-                    fprintf(p, "Turno %d: El jugador Bot jugó la carta MENOS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                break;
+        case MENOS1:
+            if(turno.quienTiro == TURNO_DEL_JUGADOR)
+                fprintf(p, "Turno %d: El jugador %s jugó la carta MENOS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            else
+                fprintf(p, "Turno %d: El jugador Bot jugó la carta MENOS 1. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            break;
 
-            case MENOS2:
-                if(turno.quienTiro == TURNO_DEL_JUGADOR)
-                    fprintf(p, "Turno %d: El jugador %s jugó la carta MENOS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                else
-                    fprintf(p, "Turno %d: El jugador Bot jugó la carta MENOS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                break;
+        case MENOS2:
+            if(turno.quienTiro == TURNO_DEL_JUGADOR)
+                fprintf(p, "Turno %d: El jugador %s jugó la carta MENOS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            else
+                fprintf(p, "Turno %d: El jugador Bot jugó la carta MENOS 2. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            break;
 
-            case ESPEJO:
-                if(turno.quienTiro == TURNO_DEL_JUGADOR)
-                    fprintf(p, "Turno %d: El jugador %s jugó la carta ESPEJO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                else
-                    fprintf(p, "Turno %d: El jugador Bot jugó la carta ESPEJO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                break;
+        case ESPEJO:
+            if(turno.quienTiro == TURNO_DEL_JUGADOR)
+                fprintf(p, "Turno %d: El jugador %s jugó la carta ESPEJO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            else
+                fprintf(p, "Turno %d: El jugador Bot jugó la carta ESPEJO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            break;
 
-            case REPETIR:
-                if(turno.quienTiro == TURNO_DEL_JUGADOR)
-                    fprintf(p, "Turno %d: El jugador %s jugó la carta REPETIR TURNO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                else
-                    fprintf(p, "Turno %d: El jugador Bot jugó la carta REPETIR TURNO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
-                break;
+        case REPETIR:
+            if(turno.quienTiro == TURNO_DEL_JUGADOR)
+                fprintf(p, "Turno %d: El jugador %s jugó la carta REPETIR TURNO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            else
+                fprintf(p, "Turno %d: El jugador Bot jugó la carta REPETIR TURNO. Puntos de %s: %d, puntos del Bot: %d\n", turno.turno, turno.nombreJugador, turno.puntosJugador, turno.puntosBot);
+            break;
         }
     }
-        if(turno.puntosJugador >= PUNTOS_MAX)
-            fprintf(p, "El jugador %s ha ganado la partida logrando llegar a 12 puntos\n",turno.nombreJugador);
-        else
-            fprintf(p, "El jugador %s ha perdido la partida, el Bot logro llegar a los 12 puntos primero\n",turno.nombreJugador);
+    if(turno.puntosJugador >= PUNTOS_MAX)
+        fprintf(p, "El jugador %s ha ganado la partida logrando llegar a 12 puntos\n",turno.nombreJugador);
+    else
+        fprintf(p, "El jugador %s ha perdido la partida, el Bot logro llegar a los 12 puntos primero\n",turno.nombreJugador);
     fclose(p);
     return 1;
 }

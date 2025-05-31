@@ -51,15 +51,16 @@ typedef struct
 {
     char nombre[36];
     int puntos;
+    int puntosAnterior;
     t_lista mano;
-    int cantCartasEnMano;
+
 
 } tJugador;
 
 ///funciones.c
 int  iniciar_juego();
 int turno_jugador(t_lista* mano);
-void efectos_cartas(int* puntosTirador, int* puntosRival, int carta, t_pila* descarte);
+void efectos_cartas(int* puntosTirador, int* puntosRival,int puntosAntTirador, int puntosAntRival, int carta, t_pila* descarte);
 void reemplazar_salto(char* s);
 int comparar_cartas(const void* a,const void* b);
 void nombreInforme(char* nombre);
