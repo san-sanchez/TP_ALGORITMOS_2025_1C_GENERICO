@@ -55,6 +55,7 @@ int eliminar_de_lista(t_lista* lista, void* dato, unsigned tam_dato)
 
 int sacar_de_lista_posicion(t_lista* lista, void* dato, unsigned tam_dato,int posicion)
 {
+    t_nodo* sacar;
     int i;
 
     if(*lista == NULL)
@@ -63,7 +64,7 @@ int sacar_de_lista_posicion(t_lista* lista, void* dato, unsigned tam_dato,int po
     for(i=0; i < posicion; i++)
         lista = &(*lista)->sig;
 
-    t_nodo* sacar = *lista;
+    sacar = *lista;
 
     memcpy(dato, sacar->dato, MIN(tam_dato, sacar->tam));
     *lista = sacar->sig;
@@ -183,51 +184,6 @@ int insertar_ordenado_sin_dupli(t_lista* lista, void* dato, unsigned tam_dato, i
     return TODO_OK;
 }
 
-//void ordenar_lista(t_lista* lista, int (comparar)(const void*, const void*, unsigned))
-//{
-//
-//    t_lista nuevaLista = NULL;
-//    t_nodo actual = *lista;
-//
-//    while (actual != NULL)
-//    {
-//        t_nodo* menorNodo = actual;
-//        t_nodo* nodoAnteriorMenor = NULL;
-//        t_nodo* temp = actual->sig;
-//        t_nodo* nodoAnteriorTemp = actual;
-//
-//        // Buscar el nodo con el menor dato en la parte no ordenada de la lista
-//        while (temp != NULL)
-//        {
-//            if (comparar(temp->dato, menorNodo->dato, menorNodo->tam) < 0)
-//            {
-//                menorNodo = temp;
-//                nodoAnteriorMenor = nodoAnteriorTemp;
-//            }
-//            nodoAnteriorTemp = temp;
-//            temp = temp->sig;
-//        }
-//
-//        // Desconectar el nodo menor de su posición actual
-//        if (nodoAnteriorMenor == NULL)
-//        {
-//            // El menor nodo es el primero de la parte no ordenada
-//            actual = menorNodo->sig;
-//        }
-//        else
-//        {
-//            nodoAnteriorMenor->sig = menorNodo->sig;
-//        }
-//
-//        // Insertar el nodo menor al principio de la nueva lista ordenada
-//        menorNodo->sig = nuevaLista;
-//        nuevaLista = menorNodo;
-//    }
-//
-//    // Actualizar la lista original para que apunte a la nueva lista ordenada
-//    *lista = nuevaLista;
-//}
-
 void ordenar_lista(t_lista* lista, int comp(const void*, const void*))
 {
     int ordenado;
@@ -258,91 +214,6 @@ void ordenar_lista(t_lista* lista, int comp(const void*, const void*))
     while(ordenado);
 }
 
-
-
-
-void crear_pila(t_pila* p)
-{
-    *p  = NULL;
-}
-
-int pila_vacia(const t_pila *p)
-{
-    return *p == NULL;
-}
-
-int pila_llena(const t_pila *p, unsigned tamDato)
-{
-    return 0;
-}
-
-
-int apilar(t_pila *p, const void *dato, unsigned tamDato)
-{
-    t_nodo* nuevo_nodo;
-
-    nuevo_nodo = malloc(sizeof(t_nodo));
-    if(!nuevo_nodo)
-        return SIN_MEMORIA;
-
-    nuevo_nodo->dato = malloc(sizeof(tamDato));
-    if(!nuevo_nodo->dato)
-    {
-        free(nuevo_nodo);
-        return SIN_MEMORIA;
-    }
-
-    memcpy(nuevo_nodo->dato, dato, tamDato);
-    nuevo_nodo->tam = tamDato;
-
-    nuevo_nodo->sig = *p;
-    *p = nuevo_nodo;
-
-    return TODO_OK;
-}
-
-int desapilar(t_pila *p, void *dato, unsigned tamDato)
-{
-    t_nodo* elim = *p;
-
-    if(elim == NULL)
-        return PILA_VACIA;
-
-    memcpy(dato, elim->dato, MIN(elim->tam,tamDato));
-
-    *p = elim->sig;
-    free(elim->dato);
-    free(elim);
-
-    return TODO_OK;
-}
-
-int ver_tope_pila(const t_pila *p, void *dato, unsigned tamDato)
-{
-    t_nodo* nodo = *p;
-
-    if(nodo == NULL)
-        return PILA_VACIA;
-
-    memcpy(dato, nodo->dato, MIN(nodo->tam,tamDato));
-    return TODO_OK;
-
-}
-
-void vaciar_pila(t_pila *p)
-{
-    t_nodo* elim;
-
-    while(*p != NULL)
-    {
-        elim = *p;
-        *p = elim->sig;
-
-        free(elim->dato);
-        free(elim);
-    }
-
-}
 
 
 

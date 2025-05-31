@@ -23,7 +23,6 @@ typedef struct s_nodo
 }t_nodo;
 
 typedef t_nodo* t_lista;
-
 typedef t_nodo* t_pila;
 
 typedef int(*tCMP)(const void* dato1, const void* dato2);
@@ -43,14 +42,6 @@ int insertar_ordenado(t_lista* lista, void* dato, unsigned tam_dato, int comp(co
 int insertar_ordenado_sin_dupli(t_lista* lista, void* dato, unsigned tam_dato, int comp(const void*, const void*));
 //void ordenar_lista(t_lista* lista, int (comparar)(const void*, const void*, unsigned));
 void ordenar_lista(t_lista* lista, int comp(const void*, const void*));
-
-void crear_pila(t_pila *p);
-int apilar(t_pila *p, const void *dato, unsigned tamDato);
-int desapilar(t_pila *p, void *dato, unsigned tamDato);
-void vaciar_pila(t_pila *p);
-int ver_tope_pila(const t_pila *p, void *dato, unsigned tamDato);
-int pila_llena(const t_pila *p, unsigned tamDato);
-int pila_vacia(const t_pila *p);
 
 
 #endif // LISTA_H_INCLUDED
