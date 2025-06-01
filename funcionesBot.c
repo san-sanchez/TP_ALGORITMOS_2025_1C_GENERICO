@@ -3,8 +3,8 @@
 int turno_bot(int puntosBot, t_lista* mano, char dif, int puntosJugador, t_pila* descarte)
 {
     int cartaTirada;
-//    printf("\nMano bot actual:");
-//    map_lista(mano,mostrar_mano);
+   // printf("\nMano bot actual:");
+   // map_lista(mano,mostrar_mano);
     printf("\n");
     switch(tolower(dif))
     {
@@ -44,12 +44,18 @@ int dificultad_media(int puntosBot, t_lista* mano, int puntosJugador)
         if(sacar_de_lista_clave(mano,&carta,sizeof(int),&elegir,comparar_cartas)==TODO_OK)
             return carta;
     }
-    if(puntosJugador > 0)///SI EL JUGADOR TIENE PUNTOS SE LOS RESTA
+    if(puntosJugador == 0)///SI EL JUGADOR TIENE CERO PUNTOS NO TIRA NEGATIVAS
     {
-        elegir=MENOS2;///PRIORIZA EL MENOS 2
+        elegir=REPETIR;
         if(sacar_de_lista_clave(mano,&carta,sizeof(int),&elegir,comparar_cartas)==TODO_OK)
             return carta;
-        elegir=MENOS1;
+        elegir=MAS2;///PRIORIZA EL MAS 2
+        if(sacar_de_lista_clave(mano,&carta,sizeof(int),&elegir,comparar_cartas)==TODO_OK)
+            return carta;
+        elegir=MAS1;
+        if(sacar_de_lista_clave(mano,&carta,sizeof(int),&elegir,comparar_cartas)==TODO_OK)
+            return carta;
+        elegir=ESPEJO;
         if(sacar_de_lista_clave(mano,&carta,sizeof(int),&elegir,comparar_cartas)==TODO_OK)
             return carta;
     }
