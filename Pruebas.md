@@ -2,7 +2,7 @@
 
 Descripcion|Salida Esperada| Salida Obtenida
 :-----:|:-----:|:-----:
-Se lanza una carta de resta de puntos al bot (-2,-1) si este antes de lanzar la carta no tiene puntos y luego de tirada la carta el bot tira una carta espejo no se le deben sumar puntos al bot|Se espera que al tirar una carta negativa a un jugador con cero puntos el puntaje quede en cero, y a su vez si se tira una carta espejo  no se sumen puntos,ya que, si no se restaron no se deberían sumar.|
+Se lanza una carta de resta de puntos al bot (-2,-1) si este antes de lanzar la carta no tiene puntos y luego de tirada la carta el bot tira una carta espejo no se le deben sumar puntos al bot|Se espera que al tirar una carta negativa a un jugador con cero puntos el puntaje quede en cero, y a su vez si se tira una carta espejo  no se sumen puntos,ya que, si no se restaron no se deberían sumar.|![alt](Img/cartaPrueba_1a.png)![alt](Img/cartaPrueba_1b.png)
 Si el jugador tira una carta de sumar puntos(+1,+2) se deberá incrementar su puntaje actual|Inicia la partida, ambos tienen puntaje 0.El jugador “fran” tiene las cartas(1) (-1) (2). y juega primero, elige jugar la carta (2) y obtiene dos puntos.|
 Si el jugador tira una carta de restar puntos(-1,-2) se deberá restar el  puntaje actual del bot|El bot tiene 2 puntos y el jugador “Piastri” tiene en su mano las cartas -2 1 -1. Se espera que al seleccionar la carta -2 se le resten 2 puntos al bot y sus puntos actuales queden en 0.|
 Nivel de juego[Medio] si el bot tiene[8-9] puntos deberá priorizar cartas que incremente su puntaje (+2,+1)|El bot tiene más de 8 puntos y en la mano tres tipos de cartas distintas. Se espera que en la dificultad media el bot elija sumar puntos por encima de aplicar algún efecto.|
