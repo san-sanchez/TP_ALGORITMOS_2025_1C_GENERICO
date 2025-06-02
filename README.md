@@ -68,6 +68,7 @@ Cuando un jugador alcanza 12 puntos:
     - Quién ganó
 ----
 ## ⚙️ Configuración del juego
+## Cambios Macros
 Para cambiar la configuración de juego o la dificultad de la IA, se pueden modificar algunas macros del codigo fuente. Estas macros se encuentran en `funciones.h`
 
 - **`PUNTOS_MAX`**: Define la cantidad de puntos necesarios para ganar la partida.
@@ -79,3 +80,31 @@ Para cambiar la configuración de juego o la dificultad de la IA, se pueden modi
  - **`CARTAS_BUENAS`**: Establece la cantidad de cartas buenas que debe tener la IA en la dificultad difícil para priorizar la cata **repetir turno**.
 
 Se pueden modificar dichos valores para que la experiencia de juego sea más desafiante o más relajada según prefieras.
+
+## Especificación del archivo `api.txt`
+
+Este archivo de texto plano está diseñado para contener **una única línea de lectura**, compuesta por dos campos separados por el carácter `|`.
+
+### Formato esperado
+url|código
+ **No debe haber espacios** antes ni después del separador `|`.
+- **Solo debe contener una línea** en todo el archivo.
+- **Debe estar guardado con extensión `.txt`**.
+
+- _**https://algoritmos-api.azurewebsites.net/api/doce|plantilla**_
+
+- ✅ Esta línea es válida porque:
+
+- No tiene espacios al principio ni al final.
+- Tiene exactamente un separador `|`.
+- Ambos campos contienen texto válido.
+
+### Ejemplo de uso incorrecto
+
+_**https://algoritmos-api.azurewebsites.net/api/doce | plantilla**_
+
+❌ Esta línea es inválida porque:
+
+- Hay espacios **después de la URL**.
+- Hay espacios **antes del código**.
+- Puede causar errores al intentar leer o parsear la línea.
