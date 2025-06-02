@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1748528189 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<limits.h>
+	<ctype.h>
+	<float.h>
+	<locale.h>
+	"cJSON.h"
+
+1748528195 c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\cjson.h
+	<stddef.h>
+
+1748811268 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\cola.c
+	"cola.h"
+
+1748811268 c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\cola.h
+	"lista.h"
+
+1748811268 c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1748812491 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\funciones.c
+	"funciones.h"
+
+1748811953 c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\funciones.h
+	<time.h>
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cJSON.h"
+	<curl/curl.h>
+	"lista.h"
+	"cola.h"
+	"pila.h"
+
+1748811268 c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\pila.h
+	"funciones.h"
+
+1748811268 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\funcionesbot.c
+	"funciones.h"
+
+1748811268 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\funcionesinterfaz.c
+	"funciones.h"
+
+1748811268 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\funcionesmazo.c
+	"funciones.h"
+
+1748811268 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\lista.c
+	"lista.h"
+
+1748812210 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\main.c
+	"funciones.h"
+
+1748811268 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\pila.c
+	"pila.h"
+
+1748812334 source:c:\users\user\documents\github\tp_algoritmos_2025_1c_generico\funcionesapi.c
+	"funciones.h"
+

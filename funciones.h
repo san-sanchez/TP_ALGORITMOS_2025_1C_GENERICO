@@ -3,6 +3,12 @@
 
 #include <time.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "cJSON.h"
+#include <curl/curl.h>
+
 #include "lista.h"
 #include "cola.h"
 #include "pila.h"
@@ -39,7 +45,12 @@
 #define CARTAS_BUENAS 1
 #define MAXIMO_CARTAS 40
 #define CARTAS_DESCARTE 33
+#define MAX_LINEA 100
 
+typedef struct{
+    char *data;
+    size_t size;
+}Buffer;
 
 typedef struct{
     char nombreJugador[36];
@@ -90,5 +101,15 @@ void interfaz(int puntosBot, tJugador jugador, t_pila* descarte,int turno_actual
 void imprimir_carta(int carta);
 char menu(const char* msj,const char* opciones);
 int mostrar_mano(void* mano);
+
+///funcionesApi.c
+cJSON* cuerpo_post(const char* nom, int vencedor);
+int peticion_post(const char* str_cuerpo, const char* api);
+int enviar_resultado_api(const char* nombre_jugador, int vencedor);
+size_t write_cb(char *ptr, size_t size, size_t nmemb, void *userdata);
+cJSON* peticion_get(const char* url_api, const char* codigo_grupo);
+void mostrar_ranking(cJSON* ranking);
+int leer_configuracion_api(const char* nombre_archivo, char* url_api, char* codigo_grupo);
+void obtener_ranking();
 
 #endif // FUNCIONES_H_INCLUDED

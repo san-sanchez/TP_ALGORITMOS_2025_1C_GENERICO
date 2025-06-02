@@ -1,4 +1,3 @@
-#include "lista.h"
 #include "funciones.h"
 
 int main()
@@ -13,6 +12,10 @@ int main()
                 iniciar_juego();
                 break;
             case 'b':
+                system("cls");
+                printf("%s\n",TITULO);
+                obtener_ranking();
+                system("pause");
                 system("cls");
                 break;
             case 'c':

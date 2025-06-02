@@ -86,14 +86,14 @@ int  iniciar_juego()
             registrarTurno(&turnos, &jugador, puntosBot, turno, cartaTirada, TURNO_DEL_JUGADOR);
         }
         turno++;
-    }
-    while(jugador.puntos < PUNTOS_MAX && puntosBot < PUNTOS_MAX);
+    }while(jugador.puntos < PUNTOS_MAX && puntosBot < PUNTOS_MAX);
     if(puntosBot >= PUNTOS_MAX)
     {
         system("cls");
         printf("%s\n",TITULO);
         printf("\tPERDISTE :(\n");
         printf("\tGANADOR BOT\n");
+        enviar_resultado_api(jugador.nombre, 0);
     }
     else
     {
@@ -101,6 +101,7 @@ int  iniciar_juego()
         printf("%s\n",TITULO);
         printf("\tGANASTE :)\n");
         printf("\tGANADOR %s\n",jugador.nombre);
+        enviar_resultado_api(jugador.nombre, 1);
     }
     generarInforme(&turnos);
     vaciarCola(&turnos);
