@@ -162,10 +162,11 @@ int leer_configuracion_api(const char* nombre_archivo, char* url_api, char* codi
         *aux='\0';
     aux = strrchr(linea, '|');
     if(codigo_grupo){
-        *aux = '/';
-        strcpy(codigo_grupo, aux);
+        strcpy(codigo_grupo, aux+1);
     }
     if(url_api){
+        *aux = '/';
+        aux++;
         *aux='\0';
         strcpy(url_api, linea);
     }
