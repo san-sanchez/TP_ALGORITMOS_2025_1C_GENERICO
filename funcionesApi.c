@@ -1,11 +1,11 @@
 #include "funciones.h"
 
-cJSON* cuerpo_post(const char* nom, int vencedor){
+cJSON* cuerpo_post(const char* nom, const char* codigo_grupo, int vencedor){
 
     cJSON *resultado = cJSON_CreateObject();
     cJSON *jugador = cJSON_CreateObject();
 
-    if(cJSON_AddStringToObject(resultado, "codigoGrupo", "plantilla") == NULL){
+    if(cJSON_AddStringToObject(resultado, "codigoGrupo", codigo_grupo) == NULL){
         cJSON_Delete(resultado);
         cJSON_Delete(jugador);
         return NULL;
@@ -38,8 +38,10 @@ int peticion_post(const char* str_cuerpo, const char* api){
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl_hnd = curl_easy_init();
-    if(!curl_hnd)
+    if(!curl_hnd){
+        curl_global_cleanup();
         return 0;
+    }
 
     headers = curl_slist_append(headers, "Content-Type: application/json; charset=utf-8");
     curl_easy_setopt(curl_hnd, CURLOPT_HTTPHEADER, headers);
@@ -55,20 +57,25 @@ int peticion_post(const char* str_cuerpo, const char* api){
 
     curl_easy_getinfo(curl_hnd, CURLINFO_RESPONSE_CODE, &http_code);
 
-    if(http_code>=300)
-        return 0;
 
     curl_slist_free_all(headers);
     curl_easy_cleanup(curl_hnd);
     curl_global_cleanup();
+
+    if(http_code>=300)
+        return 0;
+
     return 1;
 }
 
 int enviar_resultado_api(const char* nombre_jugador, int vencedor){
-    cJSON *jugador = cuerpo_post(nombre_jugador, vencedor);
-    char url_api[MAX_LINEA];
-    char *str_cuerpo = cJSON_Print(jugador);
-    leer_configuracion_api("api.txt", url_api, NULL);
+    cJSON *jugador = NULL;
+    char url_api[MAX_LINEA], codigo_grupo[MAX_LINEA];
+    char *str_cuerpo = NULL;
+
+    leer_configuracion_api("api.txt", url_api, codigo_grupo);
+    jugador = cuerpo_post(nombre_jugador, codigo_grupo, vencedor);
+    str_cuerpo = cJSON_Print(jugador);
     if(!peticion_post(str_cuerpo, url_api))
         return 0;
     return 1;
@@ -96,9 +103,9 @@ cJSON* peticion_get(const char* url_api, const char* codigo_grupo){
     CURLcode res;
     cJSON *ranking = NULL;
     Buffer buffer = {NULL, 0};
-    char api[MAX_LINEA];        ///}
-    strcpy(api, url_api);       ///}<---REVISAR
-    strcat(api, codigo_grupo);  ///}
+    char api[MAX_LINEA];
+    strcpy(api, url_api);
+    strcat(api, codigo_grupo);
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl_hnd = curl_easy_init();
@@ -173,7 +180,7 @@ void obtener_ranking(){
     leer_configuracion_api("api.txt", url_api, codigo_grupo);
     ranking = peticion_get(url_api, codigo_grupo);
     if(!ranking){
-        printf("ERROR fue posible obtener el ranking.\n");
+        printf("ERROR no fue posible obtener el ranking.\n");
         return;
     }
     printf("|---------RANKING DE JUGADORES---------|\n");

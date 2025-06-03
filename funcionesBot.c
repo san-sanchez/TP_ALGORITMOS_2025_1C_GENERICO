@@ -3,9 +3,9 @@
 int turno_bot(int puntosBot, t_lista* mano, char dif, int puntosJugador, t_pila* descarte)
 {
     int cartaTirada;
-   // printf("\nMano bot actual:");
-   // map_lista(mano,mostrar_mano);
-    printf("\n");
+//    printf("\nMano bot actual:");
+//    map_lista(mano,mostrar_mano);
+//    printf("\n");
     switch(tolower(dif))
     {
     case 'f':
@@ -20,7 +20,6 @@ int turno_bot(int puntosBot, t_lista* mano, char dif, int puntosJugador, t_pila*
     }
     return cartaTirada;
 }
-
 
 int dificultad_facil(t_lista* mano)
 {
@@ -60,7 +59,7 @@ int dificultad_media(int puntosBot, t_lista* mano, int puntosJugador)
             return carta;
     }
 
-    //carta = dificultad_facil(mano);///SI NO PUEDE HACER LO  ANTERIOR TIRA UNA AL AZAR
+    ///SI NO PUEDE HACER LO  ANTERIOR TIRA UNA AL AZAR
     sacar_de_lista_posicion(mano,&carta,sizeof(int),(rand() % 3));
 
     return carta;
@@ -111,12 +110,9 @@ int dificultad_dificil(int puntosBot, t_lista* mano, int puntosJugador, t_pila* 
         return carta;
 
     ///si no se da ninguna de las otras condiciones tira al azar
-
-    //carta = dificultad_facil(mano);
     sacar_de_lista_posicion(mano,&carta,sizeof(int),(rand() % 3));
 
     return carta;
-
 }
 
 int contar_cartas_buenas(t_lista* mano)

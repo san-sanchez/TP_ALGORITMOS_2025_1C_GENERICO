@@ -123,7 +123,7 @@ int turno_jugador(t_lista* mano)
     map_lista(mano,mostrar_mano);
     printf("\n");
     printf("\nElija un carta 1 a 3: ");
-    do  ///Se rompe al poner una letra
+    do
     {
         if(i!=0)
             printf("\nElija un carta 1 a 3: ");
@@ -277,7 +277,3 @@ int generarInforme(tCola* turnos)
     fclose(p);
     return 1;
 }
-
-
-
-

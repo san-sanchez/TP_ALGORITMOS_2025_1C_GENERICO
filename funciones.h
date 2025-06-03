@@ -69,7 +69,7 @@ typedef struct
     t_lista mano;
 
 
-} tJugador;
+}tJugador;
 
 ///funciones.c
 int  iniciar_juego();
@@ -103,7 +103,7 @@ char menu(const char* msj,const char* opciones);
 int mostrar_mano(void* mano);
 
 ///funcionesApi.c
-cJSON* cuerpo_post(const char* nom, int vencedor);
+cJSON* cuerpo_post(const char* nom, const char* codigo_grupo, int vencedor);
 int peticion_post(const char* str_cuerpo, const char* api);
 int enviar_resultado_api(const char* nombre_jugador, int vencedor);
 size_t write_cb(char *ptr, size_t size, size_t nmemb, void *userdata);

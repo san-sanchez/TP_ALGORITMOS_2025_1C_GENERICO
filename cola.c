@@ -58,18 +58,3 @@ int verPrimero(const tCola* cola, void* dato, unsigned tam){
     memcpy(dato, cola->pri->dato, MIN(tam, cola->pri->tam));
     return 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
