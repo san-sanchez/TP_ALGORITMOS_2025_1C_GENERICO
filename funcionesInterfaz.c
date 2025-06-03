@@ -1,10 +1,11 @@
 #include "funciones.h"
 
-void interfaz(int puntosBot, tJugador jugador, t_pila* descarte,int turno_actual,int quien_tira)
+void interfaz(int puntosBot, tJugador jugador, t_pila* descarte,int turno_actual,int quien_tira,char* dificultad)
 {
     int cartaEnMesa;
-    printf("Turno Actual:%d \t\t Tira: %s\n ",turno_actual, (quien_tira==0?"Bot":jugador.nombre));
-    printf("Puntos %s: %d \t Puntos Bot: %d",jugador.nombre,jugador.puntos,puntosBot);
+    printf("\tDificultad: %s\n\n",dificultad);
+    printf("Turno Actual:%d \t\t Tira: %s\n",turno_actual, (quien_tira==0?"Bot":jugador.nombre));
+    printf("Puntos %s: %d \t\t Puntos Bot: %d",jugador.nombre,jugador.puntos,puntosBot);
     printf("\n\n");
     if(ver_tope_pila(descarte,&cartaEnMesa,sizeof(int))!=PILA_VACIA)
         imprimir_carta(cartaEnMesa);

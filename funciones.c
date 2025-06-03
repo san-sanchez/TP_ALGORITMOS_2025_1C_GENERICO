@@ -9,6 +9,7 @@ int  iniciar_juego()
     tCola turnos;
     int puntosBot = 0,puntosBotAnterior = 0,turno = 1,quienTira,cartaTirada, carta, ultimaCarta;
     char dificulad;
+    char* cad_dif = NULL;
 
     printf("%s\n",TITULO);
     printf("Cual es tu nombre?\n-->");
@@ -17,7 +18,21 @@ int  iniciar_juego()
     system("cls");
 
     printf("%s\n",TITULO);
+
     dificulad=menu(MSJ_DIFICULTAD,OPC_DIF);
+    switch(tolower(dificulad))
+    {
+    case 'f':
+        cad_dif = "Facil";
+        break;
+    case 'm':
+        cad_dif = "Media";
+        break;
+    case 'd':
+        cad_dif = "Dificil";
+        break;
+    }
+
     jugador.puntos=0;
     jugador.puntosAnterior = jugador.puntos;
     crearCola(&turnos);
@@ -37,7 +52,7 @@ int  iniciar_juego()
     {
         system("cls");
         printf("%s\n",TITULO);
-        interfaz(puntosBot,jugador,&descarte,turno,quienTira);
+        interfaz(puntosBot,jugador,&descarte,turno,quienTira,cad_dif);
         if( quienTira == TURNO_DEL_BOT)
         {
             cartaTirada = turno_bot(puntosBot,&manoBot,dificulad,jugador.puntos,&descarte);
@@ -86,7 +101,11 @@ int  iniciar_juego()
             registrarTurno(&turnos, &jugador, puntosBot, turno, cartaTirada, TURNO_DEL_JUGADOR);
         }
         turno++;
-    }while(jugador.puntos < PUNTOS_MAX && puntosBot < PUNTOS_MAX);
+    }
+    while(jugador.puntos < PUNTOS_MAX && puntosBot < PUNTOS_MAX);
+    system("cls");
+    interfaz(puntosBot,jugador,&descarte,turno,quienTira,cad_dif);
+    system("pause");
     if(puntosBot >= PUNTOS_MAX)
     {
         system("cls");

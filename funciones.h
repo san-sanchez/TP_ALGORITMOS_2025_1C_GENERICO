@@ -97,7 +97,7 @@ int repartir_cartas(t_lista* mazo, tJugador* jugador, t_lista* manoBot);
 void nuevo_mazo(t_lista* mazo, t_pila* descarte);
 
 ///funcionesInterfaz.c
-void interfaz(int puntosBot, tJugador jugador, t_pila* descarte,int turno_actual,int quien_tira);
+void interfaz(int puntosBot, tJugador jugador, t_pila* descarte,int turno_actual,int quien_tira,char* dificultad);
 void imprimir_carta(int carta);
 char menu(const char* msj,const char* opciones);
 int mostrar_mano(void* mano);
